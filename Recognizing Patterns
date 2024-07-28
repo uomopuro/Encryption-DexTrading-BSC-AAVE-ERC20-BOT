@@ -1,0 +1,21 @@
+import numpy as np 
+import pandas as pd from sklearn.cluster 
+import KMeans
+
+def detect_bot_patterns(orders): """Detects repeating patterns in orders, characteristic for bots.
+
+  Args: orders: Order data in the form of DataFrame.
+
+  Returns: Dictionary with clusters of bot patterns. """" # Convert the DataFrame to a NumPy array X = orders.drop(["timestamp"], axis=1).values
+
+  # Perform KMeans clustering to identify patterns kmeans = KMeans(n_clusters=3) kmeans.fit(X)
+
+  # Get cluster labels labels = kmeans.labels_
+
+  # Analyze the cluster labels and identify potential bot patterns patterns = {} for i in range(kmeans.n_clusters): cluster_orders = orders[labels == i] patterns[f "Cluster {i+1}"] = cluster_orders.describe()
+
+  return patterns
+
+# Example usage: orders = pd.read_csv("orders.csv") patterns = detect_bot_patterns(orders)
+
+# Print the detected patterns for pattern_name, pattern_info in patterns.items(): print(f"{pattern_name}:\n{pattern_info}")
