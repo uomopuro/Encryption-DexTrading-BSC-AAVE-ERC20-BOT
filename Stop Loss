@@ -1,0 +1,19 @@
+import web3
+
+def set_stop_loss(w3, pair, amount, price, stop_loss_price): """Sets a stop loss for a position.
+
+  Args: w3: Web3 object connected to the blockchain. pair: Trading pair (e.g., "XYZ/ETH"). amount: Amount of tokens to sell when the stop loss is reached. price: Stop loss price.
+    stop_loss_price: The price at which the stop loss will be executed. """ # Create an exchange contract exchange_contract = w3.eth.contract( address="YOUR_EXCHANGE_CONTRACT_ADDRESS", abi="YOUR_EXCHANGE_CONTRACT_ABI" )
+
+  # Create stop_loss order stop_loss_order = exchange_contract.functions.createStopLossOrder( pair, amount, stop_loss_price ).buildTransaction()
+
+  # Send order transaction_hash = w3.eth.sendTransaction(stop_loss_order)
+
+  # Wait for the order to be executed receipt = w3.eth.wait_for_transaction_receipt(transaction_hash)
+
+  # Check if the order has been executed if receipt["status"] == 1: print("Stop loss order set.") else: print("Failed to set stop loss order.")
+
+
+# Example usage w3 = connect_to_wallet(private_key, network) pair = "XYZ/ETH" amount = 100 price = 0.1 stop_loss_price = 0.05
+
+set_stop_loss(w3, pair, amount, price, stop_loss_price)
