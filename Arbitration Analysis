@@ -1,0 +1,22 @@
+import requests import pandas as pd
+
+def detect_arbitrage_opportunities(pairs, exchanges): """Detects arbitrage opportunities based on price data from multiple exchanges.
+
+  Args: pairs: List of trading pairs to monitor. exchanges: List of exchanges from which to collect price data.
+
+  Returns: A dictionary with arbitrage opportunities. """ # Get price data from exchanges prices = {} for exchanges in exchanges: prices[exchange] = get_prices(exchange, pairs)
+
+  # Calculate the price difference for each pair on different exchanges arbitrage_opportunities = {} for pair in pairs: for exchange1 in exchanges: for exchange2 in exchanges: if exchange1 != exchange2: price1 = prices[exchange1][pair] price2 = prices[exchange2][pair] spread = (price1 - price2) / ((price1 + price2) / 2) * 100 if spread > 0: arbitrage_opportunities[(pair, exchange1, exchange2)] = { "spread": spread, "buy_exchange": exchange1, "sell_exchange": exchange2 }
+
+  return arbitrage_opportunities
+# Function for getting price data from the exchange def get_prices(exchange, pairs): """Gets price data for the specified trading pairs from the exchange.
+
+  Args: exchange: Exchange name. pairs: List of trading pairs.
+
+  Returns: Dictionary with prices for each trading pair. """ # ...
+
+# Example usage: pairs = ["ETH/USDT", "BTC/USDT"] exchanges = ["Binance", "Huobi", "FTX"]
+
+arbitrage_opportunities = detect_arbitrage_opportunities(pairs, exchanges)
+
+# Print the detected arbitrage opportunities for opportunity_name, opportunity_info in arbitrage_opportunities.items(): print(f"{opportunity_name}:\n{opportunity_info}")
