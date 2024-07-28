@@ -1,0 +1,23 @@
+import numpy as np 
+import pandas as pd from ta import trend, momentum
+
+def analyze_technical_indicators(prices): """Analyzes technical indicators to identify sniping opportunities.
+
+  Args: prices: DataFrame token price data.
+
+  Returns: Dictionary with analysis results. """ # Compute moving averages ma_20 = trend.sma_indicator(prices["close"], 20) ma_50 = trend.sma_indicator(prices["close"], 50)
+
+  # Calculate the relative strength index (RSI) rsi = momentum.rsi(prices["close"], n=14)
+
+  # Calculate the moving average convergence divergence (MACD) macd = momentum.macd(prices["close"])
+
+  # Analyze results = {} results["ma_20"] = ma_20[-1] results["ma_50"] = ma_50[-1] results["rsi"] = rsi[-1] results["macd"] = macd[-1]
+
+  # Identify potential sniping opportunities if prices["close"][-1] < ma_20[-1] and rsi[-1] < 50 and macd[-1] < 0: results["opportunity"] = "Sell" elif prices["close"][-1] > ma_20[-1] and rsi[-1] > 50 and macd[-1] > 0: results["opportunity"] = "Buy" else: results["opportunity"] = "No"
+
+  return results
+
+
+# Example usage prices = pd.read_csv("prices.csv") results = analyze_technical_indicators(prices)
+
+# Print the results of the analysis print("Results of analyzing technical indicators:") for key, value in results.items(): print(f"{key}: {value}")
