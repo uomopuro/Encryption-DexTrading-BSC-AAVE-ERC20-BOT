@@ -1,0 +1,17 @@
+import web3
+
+def create_limit_order(w3, pair, amount, price, side): """Creates a limit order.
+
+  Args: w3: Web3 object connected to the wallet. pair: Trading pair (e.g. "ETH/XYZ"). amount: Order amount. price: Order price. side: Order side ("buy" or "sell"). """ # Create exchange contract exchange_contract = w3.eth.contract( address="YOUR_EXCHANGE_CONTRACT_ADDRESS", abi="YOUR_EXCHANGE_CONTRACT_ABI" )
+
+  # Create limit order if side == "buy": order = exchange_contract.functions.createOrder( pair, amount, price ).buildTransaction() elif side == "sell": order = exchange_contract.functions.createLimitSellOrder( pair, amount, price ).buildTransaction() else: raise ValueError("Unknown side of order.")
+
+  # Send order transaction_hash = w3.eth.sendTransaction(order)
+
+  return transaction_hash
+
+# Create a limit order transaction_hash = create_limit_order(w3, pair, amount, price, side)
+
+# Wait for the order to be executed receipt = w3.eth.wait_for_transaction_receipt(transaction_hash)
+
+# Check if the order has been executed if receipt["status"] == 1: print("Limit order created.") else: print("Failed to create limit order.")
